@@ -536,9 +536,6 @@
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
-  .gap-2\.5 {
-    gap: calc(var(--spacing) * 2.5);
-  }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
   }
@@ -694,10 +691,22 @@
   .border-sky-400 {
     border-color: var(--color-sky-400);
   }
+  .border-sky-400\/20 {
+    border-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-sky-400) 20%, transparent);
+    }
+  }
   .border-sky-400\/25 {
     border-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 25%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-sky-400) 25%, transparent);
+    }
+  }
+  .border-sky-400\/30 {
+    border-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-sky-400) 30%, transparent);
     }
   }
   .border-sky-400\/35 {
@@ -982,6 +991,9 @@
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
   }
+  .pt-1 {
+    padding-top: var(--spacing);
+  }
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
@@ -1032,9 +1044,6 @@
   .text-xs {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
-  }
-  .text-\[10px\] {
-    font-size: 10px;
   }
   .text-\[11px\] {
     font-size: 11px;
@@ -1103,12 +1112,6 @@
   .text-sky-300 {
     color: var(--color-sky-300);
   }
-  .text-sky-300\/80 {
-    color: color-mix(in srgb, oklch(82.8% 0.111 230.318) 80%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-sky-300) 80%, transparent);
-    }
-  }
   .text-sky-400 {
     color: var(--color-sky-400);
   }
@@ -1164,6 +1167,9 @@
   }
   .opacity-70 {
     opacity: 70%;
+  }
+  .opacity-85 {
+    opacity: 85%;
   }
   .shadow-sm {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
@@ -1289,6 +1295,14 @@
     .hover\:bg-sky-400:hover {
       background-color: var(--color-sky-400);
     }
+    .hover\:bg-sky-500\/20:hover {
+      background-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 20%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-sky-500\/20:hover {
+        background-color: color-mix(in oklab, var(--color-sky-500) 20%, transparent);
+      }
+    }
     .hover\:bg-sky-500\/25:hover {
       background-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 25%, transparent);
     }
@@ -1357,6 +1371,9 @@
     .sm\:hidden {
       display: none;
     }
+    .sm\:inline {
+      display: inline;
+    }
     .sm\:inline-flex {
       display: inline-flex;
     }
@@ -1372,8 +1389,8 @@
     .sm\:items-center {
       align-items: center;
     }
-    .sm\:gap-3 {
-      gap: calc(var(--spacing) * 3);
+    .sm\:gap-2\.5 {
+      gap: calc(var(--spacing) * 2.5);
     }
     .sm\:self-center {
       align-self: center;
@@ -1414,10 +1431,6 @@
     .sm\:text-2xl {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
-    }
-    .sm\:text-lg {
-      font-size: var(--text-lg);
-      line-height: var(--tw-leading, var(--text-lg--line-height));
     }
     .sm\:text-sm {
       font-size: var(--text-sm);
@@ -2084,27 +2097,36 @@
     <!-- Compact Top Bar -->
     <header class="glass-header sticky top-0 z-30 w-full">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        <!-- Zone 1: Brand Title & Custom MA Emblem -->
-        <div class="flex items-center gap-2.5 min-w-0 shrink-0">
+        <!-- Zone 1: Subtle App Emblem & Compact Brand -->
+        <div class="flex items-center gap-2 min-w-0 shrink-0 opacity-85">
           <img
             src="/logo.png"
             alt="My Assistant Logo"
-            width="36"
-            height="36"
-            class="w-9 h-9 rounded-xl shrink-0 border border-sky-400/25 shadow-sm"
+            width="32"
+            height="32"
+            class="w-8 h-8 rounded-lg shrink-0 border border-sky-400/20"
           />
-          <div class="leading-tight min-w-0">
-            <span class="block font-display text-base sm:text-lg font-semibold tracking-tight text-slate-50 whitespace-nowrap">
-              My Assistant
-            </span>
-            <span class="block text-[10px] font-medium tracking-wide text-sky-300/80 whitespace-nowrap">
-              Voice Routine Guardian
-            </span>
-          </div>
+          <span class="hidden sm:inline font-display text-sm font-medium tracking-tight text-slate-300 whitespace-nowrap">
+            My Assistant
+          </span>
         </div>
 
-        <!-- Zone 2: Real Connectivity & Actions -->
-        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Zone 2: User Name, Connectivity & Actions -->
+        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <!-- Personalized User Name Selector -->
+          <button
+            id="open-name-modal-btn"
+            type="button"
+            title="ব্যবহারকারীর নাম সেট বা পরিবর্তন করুন"
+            class="btn-touch inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/35 text-sky-200 transition-colors whitespace-nowrap shrink-0"
+          >
+            <svg class="w-3.5 h-3.5 text-sky-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span id="header-user-name">নাম সেট করুন</span>
+          </button>
+
           <!-- Real Online / Offline Indicator -->
           <div
             id="network-status"
@@ -2347,6 +2369,15 @@
               </div>
             </div>
 
+            <!-- Name Setup Nudge (shown gently when userName is not yet set) -->
+            <button
+              id="name-setup-nudge"
+              type="button"
+              class="hidden w-full mt-3 text-xs font-medium text-sky-200 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-400/30 rounded-xl p-3 text-center transition-colors"
+            >
+              আপনার নাম সেট করুন — তাহলে অ্যাসিস্ট্যান্ট আপনার নাম ধরে ডাকবে
+            </button>
+
             <!-- Resume Audio Notice (shown only after page reload when guardian is armed until first tap) -->
             <button
               id="audio-unlock-banner"
@@ -2373,6 +2404,7 @@
             <div class="text-xs text-slate-400 space-y-1.5 leading-relaxed">
               <div><span class="text-emerald-300 font-medium">কাজ শেষ করতে বলুন:</span> "খেয়েছি", "হ্যাঁ", "করেছি", "হয়েছে", "Done"</div>
               <div><span class="text-amber-300 font-medium">পরে করতে বলুন:</span> "পরে", "৫ মিনিট পর", "১০ মিনিট পর", "একটু পর"</div>
+              <div><span class="text-sky-300 font-medium">নাম সেট করতে বলুন:</span> "আমার নাম রাহিম" বা "আমাকে করিম ডাকো"</div>
               <div><span class="text-sky-300 font-medium">নতুন কাজ যোগ করতে Orb-এ ট্যাপ করে বলুন:</span> "নতুন কাজ রাত ৯টায় ওষুধ খাওয়া"</div>
             </div>
           </div>
@@ -2414,7 +2446,7 @@
                 </div>
 
                 <div>
-                  <h1 class="font-display text-xl sm:text-2xl font-semibold text-slate-50 tracking-tight">
+                  <h1 id="dashboard-title" class="font-display text-xl sm:text-2xl font-semibold text-slate-50 tracking-tight">
                     আজকের রুটিন · Daily Routine
                   </h1>
                   <p id="today-date-label" class="text-xs text-slate-400 mt-0.5"></p>
@@ -2896,6 +2928,84 @@
       </div>
     </div>
 
+    <!-- User Name Personalization Modal -->
+    <div
+      id="user-name-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="user-name-modal-title"
+      class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-slate-950/75 backdrop-blur-sm p-0 sm:p-4"
+    >
+      <div class="glass-card w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl p-6 space-y-5 bg-slate-900/95">
+        <div class="w-10 h-1 bg-slate-700 rounded-full mx-auto sm:hidden" aria-hidden="true"></div>
+        <div class="flex items-center justify-between">
+          <h2 id="user-name-modal-title" class="font-display text-lg font-semibold text-slate-50">
+            স্বাগতম! আপনাকে কী নামে ডাকব?
+          </h2>
+          <button
+            id="close-name-modal-btn"
+            type="button"
+            aria-label="Close name settings"
+            class="btn-touch rounded-xl text-slate-400 hover:text-slate-100 hover:bg-slate-800/70 transition-colors"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        <p class="text-xs text-slate-400 leading-relaxed">
+          যে ব্যক্তি এই অ্যাপটি ব্যবহার করবেন, তাঁর নাম লিখুন বা মুখে বলুন। প্রতিটি রুটিন ও রিমাইন্ডারে ওয়েবসাইট সরাসরি তাঁর নাম ধরে ডাকবে।
+        </p>
+
+        <form id="user-name-form" class="space-y-4">
+          <div>
+            <label for="user-name-input" class="block text-xs font-medium text-slate-300 mb-1.5">
+              ব্যবহারকারীর নাম (বাংলা বা ইংরেজি)
+            </label>
+            <div class="flex items-center gap-2">
+              <input
+                id="user-name-input"
+                type="text"
+                maxlength="40"
+                placeholder="যেমন: রাহিম বা সুমাইয়া"
+                class="flex-1 h-11 px-3.5 rounded-xl bg-slate-950/80 border border-slate-700/80 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-sky-400"
+              />
+              <button
+                id="voice-name-btn"
+                type="button"
+                title="মুখের কথায় নাম বলুন"
+                class="btn-touch px-3.5 rounded-xl text-xs font-semibold bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/35 text-sky-200 transition-colors whitespace-nowrap gap-1.5"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                </svg>
+                <span id="voice-name-label">বলুন</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 pt-1">
+            <button
+              type="button"
+              id="clear-name-btn"
+              class="btn-touch px-4 rounded-xl text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors whitespace-nowrap"
+            >
+              পরে করব
+            </button>
+            <button
+              type="submit"
+              class="btn-touch flex-1 rounded-xl text-sm font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 transition-colors"
+            >
+              নাম সেট করুন ও শুরু করুন
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script>
       (function () {
         'use strict';
@@ -2936,6 +3046,8 @@
         let state = {
           tasks: [],
           settings: {
+            userName: '',
+            namePromptDismissed: false,
             mood: 'caring',
             filter: 'all',
             guardianArmed: false,
@@ -3094,23 +3206,46 @@
           return lines[Math.floor(Math.random() * lines.length)];
         }
 
+        function getUserAddressName() {
+          return sanitizeTextForHumanSpeech(state.settings.userName || '');
+        }
+
         function buildReminderSpeech(task) {
           const spokenTime = getBengaliSpokenTime(task.time);
           const cleanTitle = sanitizeTextForHumanSpeech(task.title);
           const cleanNote = sanitizeTextForHumanSpeech(task.note);
           const noteClause = cleanNote ? ` মনে রেখো, ${cleanNote}।` : '';
           const mood = state.settings.mood;
+          const name = getUserAddressName();
 
           if (mood === 'strict') {
+            if (name) {
+              return pickRandomLine([
+                `এই যে ${name}, শুনছেন? এখন ${spokenTime} বাজে। আপনার ${cleanTitle} করার সময় হয়ে গেছে।${noteClause} দেরি করবেন না, এখনই সেরে ফেলুন। ${name}, কাজটা কি হয়ে গেছে?`,
+                `${name}, মনোযোগ দিন। ঘড়িতে এখন ${spokenTime}। ${cleanTitle} কিন্তু এখনও বাকি আছে।${noteClause} একটুও আলসেমি না করে উঠে পড়ুন তো। কাজটা শেষ হয়েছে কি?`
+              ]);
+            }
             return pickRandomLine([
               `এই যে, শুনছেন? এখন ${spokenTime} বাজে। আপনার ${cleanTitle} করার সময় হয়ে গেছে।${noteClause} দেরি করবেন না, এখনই সেরে ফেলুন। কাজটা কি হয়ে গেছে?`,
               `মনোযোগ দিন, ঘড়িতে এখন ${spokenTime}। ${cleanTitle} কিন্তু এখনও বাকি আছে।${noteClause} একটুও আলসেমি না করে উঠে পড়ুন তো। কাজটা শেষ হয়েছে কি?`
             ]);
           }
           if (mood === 'friendly') {
+            if (name) {
+              return pickRandomLine([
+                `এই যে ${name}, কেমন আছো? এখন ${spokenTime} বাজে, চলো ${cleanTitle} সেরে ফেলি।${noteClause} কী খবর ${name}, কাজটা হয়ে গেছে নাকি একটু পরে করবে?`,
+                `হ্যালো ${name}! ঘড়ির কাঁটায় এখন ${spokenTime}। তোমার ${cleanTitle} করার সময় হয়েছে।${noteClause} কাজটা কি সেরে ফেলেছো?`
+              ]);
+            }
             return pickRandomLine([
               `এই যে বন্ধু, কেমন আছো? এখন ${spokenTime} বাজে, চলো ${cleanTitle} সেরে ফেলি।${noteClause} কী খবর, কাজটা হয়ে গেছে নাকি একটু পরে করবে?`,
               `হ্যালো দোস্ত! ঘড়ির কাঁটায় এখন ${spokenTime}। তোমার ${cleanTitle} করার সময় হয়েছে।${noteClause} কাজটা কি সেরে ফেলেছো?`
+            ]);
+          }
+          if (name) {
+            return pickRandomLine([
+              `এই যে ${name}, শুনছো? এখন ${spokenTime} বাজে। তোমার ${cleanTitle} করার সময় হয়ে গেছে।${noteClause} একটু উঠে কাজটা করে ফেলো তো। ${name}, কাজটা কি হয়ে গেছে?`,
+              `খেয়াল করো তো ${name}, এখন ${spokenTime} হয়েছে। ${cleanTitle} করার সময় হয়ে গেছে।${noteClause} নিজেকে একটু সময় দিয়ে কাজটা সেরে নাও। হয়েছে কি?`
             ]);
           }
           return pickRandomLine([
@@ -3122,21 +3257,23 @@
         function buildCompletionSpeech(task) {
           const cleanTitle = sanitizeTextForHumanSpeech(task.title);
           const mood = state.settings.mood;
+          const name = getUserAddressName();
+          const callName = name ? ` ${name}` : '';
           if (mood === 'strict') {
             return pickRandomLine([
-              `বাহ, বেশ ভালো। ${cleanTitle} সময়মতো শেষ করার জন্য ধন্যবাদ। এভাবেই নিয়ম মেনে চলবেন।`,
-              `চমৎকার। ${cleanTitle} সম্পন্ন হয়েছে। পরের কাজগুলোর দিকেও খেয়াল রাখবেন।`
+              `বাহ${callName}, বেশ ভালো। ${cleanTitle} সময়মতো শেষ করার জন্য ধন্যবাদ। এভাবেই নিয়ম মেনে চলবেন।`,
+              `চমৎকার${callName}। ${cleanTitle} সম্পন্ন হয়েছে। পরের কাজগুলোর দিকেও খেয়াল রাখবেন।`
             ]);
           }
           if (mood === 'friendly') {
             return pickRandomLine([
-              `দারুণ দোস্ত! ${cleanTitle} শেষ করে ফেলেছো। এভাবেই এগিয়ে যাও!`,
-              `সাবাশ বন্ধু! ${cleanTitle} একদম ঠিক সময়ে শেষ হয়েছে।`
+              `দারুণ${callName || ' দোস্ত'}! ${cleanTitle} শেষ করে ফেলেছো। এভাবেই এগিয়ে যাও!`,
+              `সাবাশ${callName || ' বন্ধু'}! ${cleanTitle} একদম ঠিক সময়ে শেষ হয়েছে।`
             ]);
           }
           return pickRandomLine([
-            `খুব ভালো! ${cleanTitle} শেষ করেছো শুনে সত্যিই ভালো লাগলো। নিজের যত্ন নিও।`,
-            `দারুণ হয়েছে! ${cleanTitle} সময়মতো হয়ে গেছে। এখন নিশ্চিন্তে একটু বিশ্রাম নাও।`
+            `খুব ভালো${callName}! ${cleanTitle} শেষ করেছো শুনে সত্যিই ভালো লাগলো। নিজের যত্ন নিও।`,
+            `দারুণ হয়েছে${callName}! ${cleanTitle} সময়মতো হয়ে গেছে। এখন নিশ্চিন্তে একটু বিশ্রাম নাও।`
           ]);
         }
 
@@ -3144,13 +3281,15 @@
           const cleanTitle = sanitizeTextForHumanSpeech(task.title);
           const minWords = numberToBengaliWords(minutes);
           const mood = state.settings.mood;
+          const name = getUserAddressName();
+          const callName = name ? ` ${name}` : '';
           if (mood === 'strict') {
-            return `ঠিক আছে, ${cleanTitle} আর মাত্র ${minWords} মিনিট পর আবার মনে করিয়ে দেব। এরপর আর দেরি চলবে না।`;
+            return `ঠিক আছে${callName}, ${cleanTitle} আর মাত্র ${minWords} মিনিট পর আবার মনে করিয়ে দেব। এরপর আর দেরি চলবে না।`;
           }
           if (mood === 'friendly') {
-            return `কোনো সমস্যা নেই বন্ধু! আমি ${minWords} মিনিট পর ${cleanTitle}-এর কথা আবার মনে করিয়ে দেব।`;
+            return `কোনো সমস্যা নেই${callName || ' বন্ধু'}! আমি ${minWords} মিনিট পর ${cleanTitle}-এর কথা আবার মনে করিয়ে দেব।`;
           }
-          return `আচ্ছা ঠিক আছে, ব্যস্ত থাকলে সমস্যা নেই। আমি ${minWords} মিনিট পর তোমাকে ${cleanTitle} আবার মনে করিয়ে দেব।`;
+          return `আচ্ছা ঠিক আছে${callName}, ব্যস্ত থাকলে সমস্যা নেই। আমি ${minWords} মিনিট পর তোমাকে ${cleanTitle} আবার মনে করিয়ে দেব।`;
         }
 
         // =====================================================================
@@ -3235,6 +3374,17 @@
           voiceActiveName: document.getElementById('voice-active-name'),
           voiceSelectInput: document.getElementById('voice-select-input'),
           testHumanVoiceBtn: document.getElementById('test-human-voice-btn'),
+          openNameModalBtn: document.getElementById('open-name-modal-btn'),
+          headerUserName: document.getElementById('header-user-name'),
+          nameSetupNudge: document.getElementById('name-setup-nudge'),
+          dashboardTitle: document.getElementById('dashboard-title'),
+          userNameModal: document.getElementById('user-name-modal'),
+          closeNameModalBtn: document.getElementById('close-name-modal-btn'),
+          userNameForm: document.getElementById('user-name-form'),
+          userNameInput: document.getElementById('user-name-input'),
+          voiceNameBtn: document.getElementById('voice-name-btn'),
+          voiceNameLabel: document.getElementById('voice-name-label'),
+          clearNameBtn: document.getElementById('clear-name-btn'),
         };
 
         // =====================================================================
@@ -3729,10 +3879,36 @@
           return { title, time: timeStr, category };
         }
 
+        function extractSpokenUserName(rawText) {
+          return sanitizeTextForHumanSpeech(rawText)
+            .replace(/^(আমার নাম হলো|আমার নাম হল|আমার নাম|আমাকে|আমি হলাম|আমি হলো|আমি|আমার ডাক নাম|নাম সেট করো|নাম রাখো|my name is|i am|call me)\s+/i, '')
+            .replace(/\s+(বলে ডাকবে|বলে ডাকো|ডাকবে|ডাকো|ডাকুন|হলো|হল|রাখো|সেট করো|করুন)$/i, '')
+            .trim()
+            .slice(0, 40);
+        }
+
         function handleSpokenReply(transcript) {
           const text = transcript.trim();
           const lower = text.toLowerCase();
           const normalized = normalizeBengaliNumbers(lower);
+          const name = getUserAddressName();
+          const callName = name ? ` ${name}` : '';
+
+          // 0. Check if user is setting their personal name via voice
+          if (/আমার নাম|আমাকে.*ডাক|নাম সেট|নাম রাখো|^(আমি|আমি হলাম)\s+[^\s]{2,}|my name is|call me/i.test(lower)) {
+            const parsedName = extractSpokenUserName(text);
+            if (parsedName && parsedName.length >= 2) {
+              state.settings.userName = parsedName;
+              state.settings.namePromptDismissed = true;
+              saveState();
+              renderAll();
+              speakBengali(
+                `খুব সুন্দর নাম! ঠিক আছে ${parsedName}, এখন থেকে আমি আপনাকে ${parsedName} নাম ধরেই ডাকব।`,
+                { listenAfter: false }
+              );
+              return;
+            }
+          }
 
           // 1. Check if user wants to add a new task via voice
           if (/নতুন কাজ|যোগ করো|যোগ করুন|অ্যাড করো|add task/i.test(lower)) {
@@ -3743,7 +3919,7 @@
             saveState();
             renderAll();
             speakBengali(
-              `ঠিক আছে, "${newTask.title}" কাজটি ${getBengaliSpokenTime(newTask.time)} সময়ের জন্য আপনার রুটিনে যোগ করে দিয়েছি।`,
+              `ঠিক আছে${callName}, ${sanitizeTextForHumanSpeech(newTask.title)} কাজটি ${getBengaliSpokenTime(newTask.time)} সময়ের জন্য রুটিনে যোগ করে দিয়েছি।`,
               { listenAfter: false }
             );
             return;
@@ -3754,11 +3930,11 @@
             const nextTask = getNextPendingTask();
             if (nextTask) {
               speakBengali(
-                `আপনার পরবর্তী কাজ হলো ${getBengaliSpokenTime(nextTask.time)} সময়ে "${nextTask.title}"।`,
+                `${name ? name + ', ' : ''}আপনার পরবর্তী কাজ হলো ${getBengaliSpokenTime(nextTask.time)} সময়ে ${sanitizeTextForHumanSpeech(nextTask.title)}।`,
                 { listenAfter: false }
               );
             } else {
-              speakBengali('আজকের সব কাজ সম্পন্ন হয়ে গেছে! এখন নিশ্চিন্তে বিশ্রাম নিন।', { listenAfter: false });
+              speakBengali(`${name ? name + ', ' : ''}আজকের সব কাজ সম্পন্ন হয়ে গেছে! এখন নিশ্চিন্তে বিশ্রাম নিন।`, { listenAfter: false });
             }
             return;
           }
@@ -3796,12 +3972,12 @@
           // Fallback conversational reply
           if (targetTask) {
             speakBengali(
-              `আপনি বললেন "${text}"। কাজটি কি হয়ে গেছে, নাকি ১০ মিনিট পর আবার মনে করিয়ে দেব?`,
+              `${name ? name + ', ' : ''}আপনি বললেন ${sanitizeTextForHumanSpeech(text)}। কাজটি কি হয়ে গেছে, নাকি দশ মিনিট পর আবার মনে করিয়ে দেব?`,
               { listenAfter: true, taskId: targetTask.id }
             );
           } else {
             speakBengali(
-              `আমি শুনতে পেয়েছি: "${text}"। নতুন কাজ যোগ করতে চাইলে বলুন "নতুন কাজ" এবং কাজের সময়।`,
+              `${name ? name + ', ' : ''}আমি শুনতে পেয়েছি, ${sanitizeTextForHumanSpeech(text)}। নতুন কাজ যোগ করতে বলুন নতুন কাজ এবং কাজের সময়।`,
               { listenAfter: false }
             );
           }
@@ -3913,8 +4089,9 @@
 
           if (fromSchedule && 'Notification' in window && Notification.permission === 'granted') {
             try {
-              new Notification('My Assistant · রুটিন রিমাইন্ডার', {
-                body: `${formatDisplayTime(task.time)} — ${task.title}`,
+              const name = getUserAddressName();
+              new Notification(name ? `${name} · রুটিন রিমাইন্ডার` : 'রুটিন রিমাইন্ডার', {
+                body: `${name ? name + ', ' : ''}${formatDisplayTime(task.time)} — ${task.title}`,
                 icon: '/pwa-192x192.png',
                 tag: 'task-' + task.id,
               });
@@ -4357,7 +4534,37 @@
           }
         }
 
+        function renderUserPersonalization() {
+          const name = getUserAddressName();
+          if (els.headerUserName) {
+            els.headerUserName.textContent = name ? name : 'নাম সেট করুন';
+          }
+          if (els.dashboardTitle) {
+            els.dashboardTitle.textContent = name
+              ? `${name}-এর আজকের রুটিন · Daily Routine`
+              : 'আজকের রুটিন · Daily Routine';
+          }
+          if (els.nameSetupNudge) {
+            els.nameSetupNudge.classList.toggle('hidden', Boolean(name));
+          }
+          if (els.audioUnlockBanner) {
+            els.audioUnlockBanner.textContent = name
+              ? `${name}, অটো-ভয়েস চালু রাখতে এখানে একবার ট্যাপ করুন`
+              : 'অটো-ভয়েস চালু রাখতে স্ক্রিনের যেকোনো জায়গায় একবার ট্যাপ করুন';
+          }
+          if (
+            els.guardianSpeechLog &&
+            state.orbState === 'idle' &&
+            !state.activeTaskId
+          ) {
+            els.guardianSpeechLog.textContent = name
+              ? `স্বাগতম ${name}! আমি আপনার রুটিন অভিভাবক। সময় হলেই আপনার নাম ধরে বাংলায় মনে করিয়ে দেব এবং উত্তর শুনব।`
+              : 'আমি আপনার রুটিন অভিভাবক। সময়ে সময়ে আপনাকে বাংলায় মনে করিয়ে দেব এবং আপনার উত্তর শুনব।';
+          }
+        }
+
         function renderAll() {
+          renderUserPersonalization();
           renderMoodSelector();
           renderGuardianArmButton();
           renderFilterTabs();
@@ -4598,9 +4805,10 @@
             }
             // Unlock browser TTS audio context via user gesture
             const next = getNextPendingTask();
+            const name = getUserAddressName();
             const intro = next
-              ? `হ্যান্ডস-ফ্রি অভিভাবক চালু হয়েছে। আপনার পরবর্তী কাজ ${getBengaliSpokenTime(next.time)} সময়ে "${next.title}"।`
-              : 'হ্যান্ডস-ফ্রি অভিভাবক চালু হয়েছে। সময় হলেই আমি আপনাকে বাংলায় ডেকে দেব।';
+              ? `${name ? name + ', ' : ''}হ্যান্ডস-ফ্রি অভিভাবক চালু হয়েছে। আপনার পরবর্তী কাজ ${getBengaliSpokenTime(next.time)} সময়ে ${sanitizeTextForHumanSpeech(next.title)}।`
+              : `${name ? name + ', ' : ''}হ্যান্ডস-ফ্রি অভিভাবক চালু হয়েছে। সময় হলেই আমি আপনার নাম ধরে ডেকে দেব।`;
             speakBengali(intro, { listenAfter: false });
           } else {
             stopAllVoiceActivity();
@@ -4651,7 +4859,8 @@
           els.activeReplyActions.classList.add('hidden');
           saveState();
           renderAll();
-          speakBengali('আজকের সব কাজ নতুন দিনের জন্য রিসেট করা হয়েছে।', { listenAfter: false });
+          const name = getUserAddressName();
+          speakBengali(`${name ? name + ', ' : ''}আজকের সব কাজ নতুন দিনের জন্য রিসেট করা হয়েছে।`, { listenAfter: false });
         });
 
         els.restoreDefaultsBtn.addEventListener('click', () => {
@@ -4678,7 +4887,8 @@
             'btn-touch px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-800/70 hover:bg-slate-700/80 border border-slate-700/60 text-slate-300 transition-colors whitespace-nowrap';
           saveState();
           renderAll();
-          speakBengali('ডিফল্ট বাংলা রুটিন ফিরিয়ে আনা হয়েছে।', { listenAfter: false });
+          const name = getUserAddressName();
+          speakBengali(`${name ? name + ', ' : ''}ডিফল্ট বাংলা রুটিন ফিরিয়ে আনা হয়েছে।`, { listenAfter: false });
         });
 
         // Real-Time Clock Set & Device Sync Modal Handlers
@@ -4708,7 +4918,8 @@
           renderAll();
           checkSchedule();
           closeTimeSyncModal();
-          speakBengali('ডিভাইসের আসল সময়ের সাথে অ্যাপের ঘড়ি সিঙ্ক করা হয়েছে।', { listenAfter: false });
+          const name = getUserAddressName();
+          speakBengali(`${name ? name + ', ' : ''}ডিভাইসের আসল সময়ের সাথে অ্যাপের ঘড়ি সিঙ্ক করা হয়েছে।`, { listenAfter: false });
         });
 
         els.customTimeForm.addEventListener('submit', (e) => {
@@ -4746,7 +4957,8 @@
           renderAll();
           checkSchedule();
           closeTimeSyncModal();
-          speakBengali(`সময় ${getBengaliSpokenTime(newHHMM)} হিসেবে সেট করা হয়েছে।`, { listenAfter: false });
+          const name = getUserAddressName();
+          speakBengali(`${name ? name + ', ' : ''}সময় ${getBengaliSpokenTime(newHHMM)} হিসেবে সেট করা হয়েছে।`, { listenAfter: false });
         });
 
         // Human-Like Voice Calibration Modal Handlers
@@ -4804,10 +5016,122 @@
           els.testHumanVoiceBtn.addEventListener('click', () => {
             unlockAudioContext();
             const next = getNextPendingTask();
+            const name = getUserAddressName();
+            const greeting = name ? `হ্যালো ${name}!` : 'হ্যালো!';
             const sample = next
-              ? `হ্যালো! আমি মাই অ্যাসিস্ট্যান্ট। এখন ${getBengaliSpokenTime(next.time)} সময়ের জন্য আপনার ${sanitizeTextForHumanSpeech(next.title)} কাজটি মনে রাখার পালা। নিজের খেয়াল রাখবেন।`
-              : 'হ্যালো! আমি মাই অ্যাসিস্ট্যান্ট, আপনার প্রতিদিনের রুটিন অভিভাবক। সময় হলেই ঠিক এভাবে মানুষের মতো আপনাকে মনে করিয়ে দেব।';
+              ? `${greeting} এখন ${getBengaliSpokenTime(next.time)} সময়ের জন্য আপনার ${sanitizeTextForHumanSpeech(next.title)} কাজটি মনে রাখার পালা। নিজের খেয়াল রাখবেন।`
+              : `${greeting} আমি আপনার প্রতিদিনের রুটিন অভিভাবক। সময় হলেই ঠিক এভাবে মানুষের মতো আপনার নাম ধরে মনে করিয়ে দেব।`;
             speakBengali(sample, { listenAfter: false });
+          });
+        }
+
+        // User Name Personalization Modal Handlers
+        let nameRecognition = null;
+
+        function openUserNameModal() {
+          els.userNameInput.value = state.settings.userName || '';
+          if (els.clearNameBtn) {
+            els.clearNameBtn.textContent = state.settings.userName ? 'নাম মুছুন' : 'পরে করব';
+          }
+          els.userNameModal.classList.remove('hidden');
+          els.userNameModal.classList.add('flex');
+          setTimeout(() => els.userNameInput.focus(), 50);
+        }
+
+        function closeUserNameModal(markDismissed = false) {
+          if (nameRecognition) {
+            try { nameRecognition.abort(); } catch (_) {}
+            nameRecognition = null;
+          }
+          if (els.voiceNameLabel) els.voiceNameLabel.textContent = 'বলুন';
+          if (markDismissed) {
+            state.settings.namePromptDismissed = true;
+            saveState();
+          }
+          els.userNameModal.classList.add('hidden');
+          els.userNameModal.classList.remove('flex');
+        }
+
+        if (els.openNameModalBtn) {
+          els.openNameModalBtn.addEventListener('click', openUserNameModal);
+        }
+        if (els.nameSetupNudge) {
+          els.nameSetupNudge.addEventListener('click', openUserNameModal);
+        }
+        if (els.closeNameModalBtn) {
+          els.closeNameModalBtn.addEventListener('click', () => closeUserNameModal(true));
+        }
+        if (els.userNameModal) {
+          els.userNameModal.addEventListener('click', (e) => {
+            if (e.target === els.userNameModal) closeUserNameModal(true);
+          });
+        }
+        if (els.voiceNameBtn) {
+          els.voiceNameBtn.addEventListener('click', () => {
+            if (!SpeechRecognitionAPI) {
+              els.voiceNameLabel.textContent = 'সাপোর্ট নেই';
+              return;
+            }
+            if (nameRecognition) {
+              try { nameRecognition.abort(); } catch (_) {}
+              nameRecognition = null;
+              els.voiceNameLabel.textContent = 'বলুন';
+              return;
+            }
+            const rec = new SpeechRecognitionAPI();
+            rec.lang = 'bn-BD';
+            rec.interimResults = false;
+            rec.onstart = () => {
+              els.voiceNameLabel.textContent = 'শুনছি...';
+            };
+            rec.onresult = (event) => {
+              const spoken = event.results[0][0].transcript;
+              const cleaned = extractSpokenUserName(spoken);
+              if (cleaned) els.userNameInput.value = cleaned;
+            };
+            rec.onerror = () => {
+              els.voiceNameLabel.textContent = 'বলুন';
+              nameRecognition = null;
+            };
+            rec.onend = () => {
+              els.voiceNameLabel.textContent = 'বলুন';
+              nameRecognition = null;
+            };
+            nameRecognition = rec;
+            rec.start();
+          });
+        }
+        if (els.clearNameBtn) {
+          els.clearNameBtn.addEventListener('click', () => {
+            state.settings.userName = '';
+            state.settings.namePromptDismissed = true;
+            saveState();
+            renderAll();
+            closeUserNameModal(true);
+          });
+        }
+        if (els.userNameForm) {
+          els.userNameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            unlockAudioContext();
+            const val = sanitizeTextForHumanSpeech(els.userNameInput.value || '').slice(0, 40);
+            state.settings.userName = val;
+            state.settings.namePromptDismissed = true;
+            if (val && !state.settings.guardianArmed) {
+              state.settings.guardianArmed = true;
+            }
+            saveState();
+            renderAll();
+            closeUserNameModal(true);
+            if (val) {
+              playGuardianChime();
+              setTimeout(() => {
+                speakBengali(
+                  `স্বাগতম ${val}! আমি আপনার প্রতিদিনের রুটিন অভিভাবক। এখন থেকে সময় হলেই ঠিক এভাবে ${val} নাম ধরে আপনাকে ডেকে দেব।`,
+                  { listenAfter: false }
+                );
+              }, 260);
+            }
           });
         }
 
@@ -4909,7 +5233,16 @@
           els.audioUnlockBanner.addEventListener('click', () => {
             unlockAudioContext();
             playGuardianChime();
+            const name = getUserAddressName();
+            if (name) {
+              setTimeout(() => {
+                speakBengali(`হ্যালো ${name}, আপনার রুটিন অভিভাবক প্রস্তুত আছে।`, { listenAfter: false });
+              }, 240);
+            }
           });
+        }
+        if (!state.settings.userName && !state.settings.namePromptDismissed) {
+          setTimeout(openUserNameModal, 350);
         }
         checkSchedule();
         setInterval(checkSchedule, 1000);
